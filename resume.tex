@@ -1,0 +1,166 @@
+% resume.tex
+% vim:set ft=tex spell:
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[letterpaper,margin=0.75in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{mdwlist}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{tgpagella}
+\usepackage{hyperref}
+\usepackage{biblatex}
+\addbibresource{publications.bib}
+\pagestyle{empty}
+\setlength{\tabcolsep}{0em}
+
+% indentsection style, used for sections that aren't already in lists
+% that need indentation to the level of all text in the document
+\newenvironment{indentsection}[1]%
+{\begin{list}{}%
+	{\setlength{\leftmargin}{#1}}%
+	\item[]%
+}
+{\end{list}}
+
+% opposite of above; bump a section back toward the left margin
+\newenvironment{unindentsection}[1]%
+{\begin{list}{}%
+	{\setlength{\leftmargin}{-0.5#1}}%
+	\item[]%
+}
+{\end{list}}
+
+% format two pieces of text, one left aligned and one right aligned
+\newcommand{\headerrow}[2]
+{\begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+	#1 &
+	#2 \\
+\end{tabular*}}
+
+% make "C++" look pretty when used in text by touching up the plus signs
+\newcommand{\CPP}
+{C\nolinebreak[4]\hspace{-.05em}\raisebox{.22ex}{\footnotesize\bf ++}}
+
+% and the actual content starts here
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Ethan Hunt}}
+
+Las Vegas\ \ \textbullet \ \ Nevada
+\\
+  (702) 439-0876\ \ \textbullet \ \ ethanweihunt@gmail.com\ \ \textbullet \ \ \url{github.com/RedPenguin88}
+\end{center}
+
+\hrule
+\vspace{0.4em}
+
+\begin{center}
+  {\Large \textbf{Honors Student with Aspiring Goals in IT}}
+\end{center}
+
+% \vspace{0.4em}
+\noindent
+A highly motivated college student with an aptitude for learning, strong communication
+skills, and a passion for technology
+
+\vspace{-1.0em}
+\subsection*{Education}
+
+\begin{itemize}
+	\parskip=0.1em
+
+	\item 
+	\textbf{University of Nevada Las Vegas}
+  \\
+	\headerrow
+    {\emph{College of Engineering, B.S. Computer Science}}
+    {Expected May 2024}
+	\begin{itemize*}
+		\item Emphasis on Computer Networks
+		\item GPA: 3.70
+    \item Maintained Dean's Honors List 2 semesters in a row
+	\end{itemize*}
+
+\end{itemize}
+
+\hrule
+\vspace{-0.4em}
+\subsection*{Projects}
+
+\begin{indentsection}{\parindent}
+\hyphenpenalty=1000
+\begin{description*}
+	\item[Simple Terminal:]
+  My build of a terminal emulator extended with features such as ligatures,
+  wide-glyph support, and fallback fonts
+	\item[Neovim:]
+  Personal configuration written entirely in Lua with support for language
+  servers allowing diagnostics and completion support
+  \item[DWM:]
+  Dynamic window manager supporting a tiling window layout and adding support
+  for gaps and a clickable bar
+\end{description*}
+\end{indentsection}
+
+\hrule
+\vspace{-0.4em}
+\subsection*{Core Technical Skills}
+
+\begin{indentsection}{\parindent}
+\hyphenpenalty=1000
+\begin{description*}
+	\item[Languages:]
+	C, \CPP, Java, Lua, \LaTeX, Python, shell script
+	\item[Commandline Familiarity:]
+  Proficiency with the GNU Core Utilities
+  \item[Systems Administration:]
+  Proficiency with basic administration of home Linux device
+\end{description*}
+\end{indentsection}
+
+\hrule
+\vspace{-0.4em}
+\subsection*{Work Experience}
+
+\begin{itemize}
+	\parskip=0.1em
+
+  \item
+  \headerrow
+    {\textbf{Snaplingo}}
+    {Remote}
+  \\
+  \headerrow
+    {\emph{English Tutor}}
+    {\emph{2019}}
+  \begin{itemize*}
+    \item Taught international students English
+    % \item Utilized cutting-edge technology to deliver English language to international students
+    \item Created engaging lesson plans tailored for each student
+  \end{itemize*}
+
+	\item 
+	\headerrow
+		{\textbf{Startalk Program}}
+    {Kansas City, Missouri}
+  \\
+  \headerrow
+    {\emph{Teacher Assistant}}
+    {\emph{2018}}
+  \begin{itemize*}
+    \item Managed dozens of students
+    \item Collaborated with colleagues to ensure students' success in language learning
+    \item Recommended solutions when students had problems
+  \end{itemize*}
+
+\end{itemize}
+
+\hrule
+
+\nocite{*}
+\defbibheading{bibHeading}{\subsection*{Publications}}
+\printbibliography[heading=bibHeading]
+
+\end{document}
