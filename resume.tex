@@ -1,163 +1,144 @@
+%-------------------------
+% Rover Resume - Fancy Template
+% Link: https://github.com/subidit/rover-resume
+%------------------------
+
 % resume.tex
 % vim:set ft=tex spell:
 
 \documentclass[11pt,letterpaper]{article}
-\usepackage[letterpaper,margin=0.75in]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage{mdwlist}
+
 \usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage{tgpagella}
-\usepackage{hyperref}
+\usepackage{inter} % https://tug.org/FontCatalogue/
+\renewcommand*\familydefault{\sfdefault}
+
+\usepackage{geometry}
+\geometry{
+letterpaper,
+top=0.75in,
+bottom=0.75in,
+left=1in,
+right=1in
+}
+
 \usepackage{biblatex}
 \addbibresource{publications.bib}
-\pagestyle{empty}
-\setlength{\tabcolsep}{0em}
-\hypersetup{
+
+\setcounter{secnumdepth}{0} % remove section numbering
+\pdfgentounicode=1 % make ATS friendly
+
+\usepackage[dvipsnames]{xcolor} % xcolor.pdf Sec.4 Colors by Name
+\colorlet{icnclr}{gray}
+
+\usepackage{enumitem}
+\setlist[itemize]{
+    noitemsep,
+    left=0pt..1.5em
+}
+\setlist[description]{itemsep=0pt}
+\setlist[enumerate]{align=left}
+
+\usepackage{titlesec}
+% \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
+% \titlespacing{\section}{0pt}{*3}{*1}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+% \titleformat{<command>}[<shape>]{<format>}{<label>}{<sec>}{<before-code>}[<after-code>]
+\titleformat{\section}{\color{Sepia}\large\fontseries{black}\selectfont\uppercase}{}{}{\ruleafter}[\global\RemVStrue]
+\titleformat{\subsection}{\large\fontseries{semibold}\selectfont}{}{}{\rvs}
+\titleformat{\subsubsection}{\large\fontseries{medium}\selectfont}{}{}{}
+
+\usepackage{xhfill}
+\newcommand\ruleafter[1]{#1~\xrfill[.5ex]{1pt}[gray]} % add rule after title in .5 x-height
+
+\newif\ifRemVS % remove vspace between \section & \subsection
+\newcommand{\rvs}{
+    \ifRemVS
+        \vspace{-1.5ex}
+    \fi
+    \global\RemVSfalse
+}
+
+
+\usepackage{fontawesome5}
+
+\usepackage[bookmarks=false]{hyperref} % [imp!]
+\hypersetup{ % https://en.wikibooks.org/wiki/LaTeX/Hyperlinks
     colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,
-    urlcolor=blue,
-    pdftitle={Overleaf Example},
-    pdfpagemode=FullScreen,
-    }
-\hyphenpenalty=10000
-\hbadness=10000
-\tolerance=1
-\emergencystretch=\maxdimen
-\urlstyle{same}
-
-% indentsection style, used for sections that aren't already in lists
-% that need indentation to the level of all text in the document
-\newenvironment{indentsection}[1]%
-{\begin{list}{}%
-	{\setlength{\leftmargin}{#1}}%
-	\item[]%
+    urlcolor=Sepia,
+    pdftitle={My Resume},
 }
-{\end{list}}
 
-% opposite of above; bump a section back toward the left margin
-\newenvironment{unindentsection}[1]%
-{\begin{list}{}%
-	{\setlength{\leftmargin}{-0.5#1}}%
-	\item[]%
-}
-{\end{list}}
+\pagestyle{empty} % remove page number
 
-% format two pieces of text, one left aligned and one right aligned
-\newcommand{\headerrow}[2]
-{\begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
-	#1 &
-	#2 \\
-\end{tabular*}}
-
-% make "C++" look pretty when used in text by touching up the plus signs
-\newcommand{\CPP}
-{C\nolinebreak[4]\hspace{-.05em}\raisebox{.22ex}{\footnotesize\bf ++}}
-
-% and the actual content starts here
 \begin{document}
 
+%== HEADER ==%
 \begin{center}
-{\LARGE \textbf{Ethan Hunt}}
-
-  Las Vegas\ \ \textbullet \ \ Nevada\ \ \textbullet \ \ (702) 439-0876
-\\
-  \href{mailto:ethanweihunt@gmail.com}{ethanweihunt@gmail.com}\ \ \textbullet \ \ \href{https://github.com/RedPenguin88}{GitHub}\ \ \textbullet \ \ \href{https://www.linkedin.com/in/ethan-hunt-57a435282}{LinkedIn}
+    \begin{minipage}{0.5\textwidth}
+        {\fontsize{36}{36}\selectfont\intermedium Ethan Hunt} \\
+    \end{minipage} \hfill
+    \begin{minipage}{0.4\textwidth}
+        {\color{icnclr}\faEnvelope[regular]} \href{mailto:ethanweihunt@gmail.com}{ethanweihunt@gmail.com} \\
+        {\color{icnclr}\hspace{1.9pt}\faIcon{mobile-alt}} \hspace{2.5pt}\href{tel:7024390876}{702 439 0876} \\
+        {\color{icnclr}\hspace{0.8pt}\faLinkedinIn} \hspace{0.8pt}\href{https://www.linkedin.com/in/ethan-hunt-g137}{linkedin.com/in/ethan-hunt-g137} \\
+        {\color{icnclr}\faGithub} \href{https://www.github.com/RedPenguin88}{github.com/RedPenguin88}
+    \end{minipage}
 \end{center}
 
-\hrule height 0.1pt
-\vspace{0.4em}
-
-% \begin{center}
-%   {\Large \textbf{IT Engineer with a Passion for Technology}}
-% \end{center}
-%
-% % \vspace{0.4em}
-% \noindent
-% IT Specialist with 2 years of experience in systems administration and DevOps engineering, with particular emphasis on automation and orchestration.
-
-\vspace{-1.0em}
-\subsection*{Education}
-
+\section{Education}
+%==============
+\subsection{University of Nevada, Las Vegas}
+\subsubsection{\normalfont\textit{College of Engineering, B.S. Computer Science} \hfill 2024}
 \begin{itemize}
-	\parskip=0.1em
-
-	\item 
-	\textbf{University of Nevada Las Vegas}
-  \\
-	\headerrow
-    {\emph{College of Engineering, B.S. Computer Science}}
-    {\emph{May 2024}}
-	\begin{itemize*}
-		\item Cumulative GPA: 3.60
-    \item Won 1\textsuperscript{st} Place for the UNLV Engineering Senior Design Competition in Computer Science
-    \item Concentration: Operating Systems, Compiler Construction, Algorithm Design
-	\end{itemize*}
-
+    \item Cumulative GPA: 3.60
+    \item Coursework: Operating Systems, Compiler Construction, Algorithm Design
 \end{itemize}
 
-\hrule height 0.1pt
-\vspace{-0.4em}
-\subsection*{Work Experience}
-
+\section{Experience}
+%===================
+\subsection{Credit One Bank \hfill Las Vegas, Nevada}
+\subsubsection{\normalfont\textit{IT Leadership Associate} \hfill Jul 2024 -- Present}
 \begin{itemize}
-	\parskip=0.1em
-
-  \item
-  \headerrow
-    {\textbf{Credit One Bank}}
-    {\textbf{Las Vegas, Nevada}}
-  \\
-  \headerrow
-    {\emph{IT Leadership Associate}}
-    {\emph{2024 -- Present}}
-  \begin{itemize*}
-    \item Completed cross-functional infrastructure and DevOps rotations, gaining hands-on experience across Windows Systems, VMware, Unix, and Kubernetes platform operations.
-    \item Facilitated disaster recovery readiness by automating OpenShift DR switchover tasks with Ansible Automation Platform, reducing manual steps during multi-datacenter maintenance and extended-stay exercises.
-    \item Improved observability for Kubernetes platforms by deploying OpenShift logging with Loki, configuring pipelines and filters for application and infrastructure logs, and enabling centralized log analysis.
-    \item Enhanced data protection capabilities by implementing OpenShift backup and restore workflows using OADP and Velero, and collaborating with vendors to evaluate enterprise Kubernetes backup solutions.
-    \item Supported enterprise infrastructure modernization by building and deploying HPE ProLiant Gen11 servers for production video systems, coordinating with Networking, Facilities, and vendors to deliver secure, end-to-end deployments.
-    \item Strengthened identity and access governance by reconciling Access IQ data with Active Directory and Dayforce, validating over 90\% of user access and reducing manual review effort.
-  \end{itemize*}
-  \item
-  \headerrow
-    {\textbf{Credit One Bank}}
-    {\textbf{Las Vegas, Nevada}}
-  \\
-  \headerrow
-    {\emph{Windows Sysadmin Intern}}
-    {\emph{2023}}
-  \begin{itemize*}
-    \item Managed the deployment and management of DHCP servers, efficiently configuring load balanced failover between two servers, ensuring high availability for all DHCP-enabled devices.
-    \item Utilized PowerShell automation scripts for seamless deployment and configuration of DHCP servers, reducing deployment time and validating DHCP requests and renewals.
-    \item Resolved complex Windows File Server issues by effectively unlocking locked files, creating shares, and modifying share permissions, improving overall data accessibility and security.
-    \item Effectively leveraged vSphere to streamline the deployment and management of Credit One Bank's infrastructure.
-  \end{itemize*}
+    \item Completed cross-functional rotations across VMware, OpenShift, and SecOps
+    \item Automated OpenShift DR switchovers using Ansible Automation Platform across multi-datacenter environments
+    \item Deployed OpenShift logging with Loki for centralized application and infrastructure log aggregation
+    \item Built and deployed HPE ProLiant Gen11 servers for production video systems
+    \item Implemented Kubernetes backup and restore using OADP and Velero; collaborating with vendors to evaluate enterprise Kubernetes backup solutions
 \end{itemize}
 
-\hrule height 0.1pt
-\vspace{-0.4em}
-\subsection*{Core Technical Skills}
+\subsection{Credit One Bank \hfill Las Vegas, Nevada}
+\subsubsection{\normalfont\textit{Windows Sysadmin Intern} \hfill Jun 2023 -- Aug 2023}
+\begin{itemize}
+    \item Deployed and managed DHCP servers with load-balanced failover for high availability
+    \item Automated DHCP deployment and validation using PowerShell
+    \item Resolved Windows File Server issues involving locked files, shares, and permissions
+    \item Effectively leveraged vSphere to streamline the deployment and management of Credit One Bank's infrastructure
+\end{itemize}
 
-\begin{indentsection}{\parindent}
-\hyphenpenalty=1000
-\begin{description*}
-  \item[Automation \& Scripting:]
-  PowerShell, Shell scripting, Ansible (Automation Platform), Python, Go
-  \item[Platforms \& Virtualization:]
-  Kubernetes (Red Hat OpenShift), VMware vSphere
-  \item[Systems \& Identity:]
-  Windows Server, Linux/Unix, Active Directory (AD), SCCM
-  \item[Observability \& Data Protection:]
-  OpenShift Logging, Loki, OADP, Velero
-\end{description*}
-\end{indentsection}
+\section{Skills}
+%===============
+\vspace{-0.5em}
+\begin{description}
+\parskip=0.1em
+    \item[Automation \& Scripting:] PowerShell, Shell scripting, Ansible (Automation Platform), Python
+    \item[Platforms \& Virtualization:] Kubernetes (Red Hat OpenShift), VMware vSphere
+    \item[Systems \& Identity:] Windows Server, Linux/Unix, Active Directory (AD), SCCM
+    \item[Observability \& Data Protection:] OpenShift Logging, Loki, OADP, Velero
+\end{description}
 
-% \hrule
-%
-% \nocite{*}
-% \defbibheading{bibHeading}{\subsection*{Publications}}
-% \printbibliography[heading=bibHeading]
+\section{Certification \& Awards}
+%===============================
+\vspace{-0.5em}
+\begin{enumerate}[label=\null, left=0pt..0pt, itemsep=0pt]
+\parskip=0.2em
+  \item CompTIA Security+ \hfill Expected 2026
+  \item KCNA: Kubernetes and Cloud Native Associate \hfill 2025
+  \item 1\textsuperscript{st} Place in the UNLV Engineering Senior Design Competition \hfill 2024
+\end{enumerate}
+
+\nocite{*}
+\defbibheading{bibHeading}{\section{Publications}}
+\printbibliography[heading=bibHeading]
 
 \end{document}
