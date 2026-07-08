@@ -5,12 +5,17 @@ on:
       - "resume.tex"
       - "publications.bib"
       - ".github/workflows/build.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v7.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: GitHub Action for LaTeX
         uses: xu-cheng/latex-action@4.1.0
         with:
