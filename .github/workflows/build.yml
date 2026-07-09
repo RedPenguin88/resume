@@ -20,7 +20,6 @@ jobs:
         uses: xu-cheng/latex-action@4.1.0
         with:
           root_file: resume.tex
-          latexmk_use_xelatex: true
       - name: Upload PDF File
         run: |
           git config user.name "github-actions[bot]"
