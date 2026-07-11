@@ -1,0 +1,36 @@
+name: Build LaTeX document
+on:
+  push:
+    paths:
+      - "resume.tex"
+      - "publications.bib"
+      - ".github/workflows/build.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v7.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: GitHub Action for LaTeX
+        uses: xu-cheng/latex-action@4.1.0
+        with:
+          root_file: resume.tex
+      - name: Upload PDF File
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add resume.pdf
+
+          if git diff --cached --quiet; then
+            echo "No PDF changes."
+            exit 0
+          fi
+
+          git commit -m "generated pdf"
+          git push
