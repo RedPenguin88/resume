@@ -8,6 +8,9 @@
 
 \documentclass[11pt,letterpaper]{article}
 
+\usepackage[none]{hyphenat}
+\raggedright
+
 \usepackage[T1]{fontenc}
 \usepackage{inter} % https://tug.org/FontCatalogue/
 \renewcommand*\familydefault{\sfdefault}
@@ -59,6 +62,9 @@ right=1in
     \global\RemVSfalse
 }
 
+% make "C++" look pretty when used in text by touching up the plus signs
+\newcommand{\CPP}
+{C\nolinebreak[4]\hspace{-.05em}\raisebox{.22ex}{\footnotesize\bf ++}}
 
 \usepackage{fontawesome5}
 
@@ -95,16 +101,45 @@ right=1in
     \item Coursework: Operating Systems, Compiler Construction, Algorithm Design
 \end{itemize}
 
+\section{Certification \& Awards}
+%===============================
+\vspace{-0.75em}
+\begin{enumerate}[label=\null, left=0pt..0pt, itemsep=0pt]
+\parskip=0.2em
+  \item CompTIA Security+ \hfill 2026
+  \item KCNA: Kubernetes and Cloud Native Associate \hfill 2025
+  \item 1\textsuperscript{st} Place in the UNLV Engineering Senior Design Competition \hfill 2024
+\end{enumerate}
+
+\section{Skills}
+%===============
+\vspace{-0.75em}
+\begin{description}
+\parskip=0.1em
+    \item[Programming \& Automation:] Python, PowerShell, Ansible, Selenium, Shell Scripting, \CPP, Java, Go, Lua, \LaTeX{}
+    \item[Containers \& Platform Engineering:] Kubernetes (Red Hat OpenShift), Ansible Automation Platform (AAP), Proxmox VE, Velero, OADP, Loki, MinIO
+    \item[Windows Infrastructure:] Windows Server, Active Directory, Group Policy, DNS, DHCP, SSCM, Windows Administration
+    \item[Virtualization \& Hardware:] VMware vSphere, HPE ProLiant, iLO, RAID
+    \item[Identity \& Access Management:] Microsoft Entra ID (Azure AD), Duo MFA, Privileged Access Management (PAM)
+    \item[Security \& Operations:] CrowdStrike Falcon, Qualys VMDR/CSAM, Exabeam SIEM, Carbon Black, Microsoft Defender, Data Loss Prevention (DLP), Vulnerability Management
+    \item[Enterprise Platforms:] ServiceNow, Jira, Sharepoint
+\end{description}
+
 \section{Experience}
 %===================
 \subsection{Credit One Bank \hfill Las Vegas, Nevada}
 \subsubsection{\normalfont\textit{IT Leadership Associate} \hfill Jul 2024 -- Present}
 \begin{itemize}
-    \item Completed cross-functional rotations across VMware, OpenShift, and SecOps
-    \item Automated OpenShift DR switchovers using Ansible Automation Platform across multi-datacenter environments
-    \item Deployed OpenShift logging with Loki for centralized application and infrastructure log aggregation
-    \item Built and deployed HPE ProLiant Gen11 servers for production video systems
-    \item Implemented Kubernetes backup and restore using OADP and Velero; collaborating with vendors to evaluate enterprise Kubernetes backup solutions
+    \item Engineered Python automation that correlated 1,500+ unmanaged CrowdStrike assets and 10,000+ Qualys assets, eliminating manual creation of 200+ Falcon sensor installation Jira tickets.
+    \item Automated Kubernetes disaster recovery across multi-datacenter environment using Ansible Automation Platform, replacing manual failover tasks with repeatable workflows that reduced operational risk.
+    \item Developed PowerShell and Microsoft Graph API automation validating 90\%+ of AccessIQ identities against Active Directory and Dayforce, significantly reducing manual access reviews.
+    \item Modernized privileged account provisioning by migrating legacy Azure AD automation to the Microsoft Graph API, preserving integrations with Active Directory, Duo, and PAM systems.
+    \item Developed Python/Selenium automation to collect monthly IT audit evidence across security platforms, standardizing compliance artifacts while reducing repetitive manual effort.
+    \item Deployed centralized logging for production OpenShift clusters using Loki, enabling searchable application, infrastructure, and audit logs to improve troubleshooting and observability.
+    \item Deployed HPE ProLiant Gen11 servers replacing end-of-life security camera infrastructure by configuring secure iLO management, RAID, and Windows Server provisioning.
+    \item Implemented production backup and disaster recovery workflows for OpenShift using OADP and Velero, strengthening application resiliency across enterprise Kubernetes environments.
+    \item Supported enterprise infrastructure spanning 2,000+ Windows servers and across multi-datacenter OpenShift clusters, contributing automation, platform administration, and disaster recovery initiatives.
+    \item Completed 220+ ServiceNow requests and 200+ Exabeam investigations while administering Active Directory, endpoint security, and privileged access across 19,000+ managed assets.
 \end{itemize}
 
 \subsection{Credit One Bank \hfill Las Vegas, Nevada}
@@ -116,26 +151,19 @@ right=1in
     \item Effectively leveraged vSphere to streamline the deployment and management of Credit One Bank's infrastructure
 \end{itemize}
 
-\section{Skills}
-%===============
-\vspace{-0.5em}
-\begin{description}
-\parskip=0.1em
-    \item[Automation \& Scripting:] PowerShell, Shell scripting, Ansible (Automation Platform), Python
-    \item[Platforms \& Virtualization:] Kubernetes (Red Hat OpenShift), VMware vSphere
-    \item[Systems \& Identity:] Windows Server, Linux/Unix, Active Directory (AD), SCCM
-    \item[Observability \& Data Protection:] OpenShift Logging, Loki, OADP, Velero
-\end{description}
-
-\section{Certification \& Awards}
-%===============================
-\vspace{-0.5em}
-\begin{enumerate}[label=\null, left=0pt..0pt, itemsep=0pt]
-\parskip=0.2em
-  \item CompTIA Security+ \hfill 2026
-  \item KCNA: Kubernetes and Cloud Native Associate \hfill 2025
-  \item 1\textsuperscript{st} Place in the UNLV Engineering Senior Design Competition \hfill 2024
-\end{enumerate}
+\section{Projects}
+%===================
+\subsection{Kompare {\normalfont $|$ \href{https://github.com/RedPenguin88/kompare/tree/openshift-routes}{\textit{GitHub Link}}} \hfill 2025}
+\begin{itemize}
+    \item Extended an open-source Go CLI to support OpenShift Routes and CSV export, enabling comparison of production and disaster recovery Kubernetes clusters.
+    \item Developed Kubernetes and OpenShift API integrations to compare cluster resources across environments, improving validation of enterprise OpenShift deployments.
+    \item Contributed production-ready enhancements to an existing open-source infrastructure tool using Go and the Kubernetes client libraries.
+\end{itemize}
+\subsection{RoadWatch {\normalfont $|$ \href{https://github.com/UNLV-CS472-672/2024-S-GROUP1-Roadwatch}{\textit{GitHub Link}}} \hfill 2024}
+\begin{itemize}
+    \item Collaborated on a 10-member Agile team to develop a Progressive Web Application for community road hazard reporting using React, TypeScript, Material UI, and Vite.
+    \item Developed a multi-step registration workflow with reusable React components, backend account creation integration, and standardized styling through automated Stylelint compliance.
+\end{itemize}
 
 \nocite{*}
 \defbibheading{bibHeading}{\section{Publications}}
